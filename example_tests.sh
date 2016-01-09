@@ -92,6 +92,17 @@ run test_equal python -c "f = open('test.out','w'); f.write('1\n2\n3\n');f.close
 assert_equal "$(cat test.out | wc -l)" 4 
 rm -f test.out
 
+# assert_equal_str
+touch test.out
+run test_equal_str python -c "f = open('test.out','w'); f.write('foo\n');f.close();"
+# success
+assert_equal_str "$(cat test.out)" "foo" 
+# failure
+assert_equal_str "$(cat test.out)" "bar" 
+
+rm -f test.out
+
+
 #using STDOUT_FILE
 run use_stdout_file python -c "print '1\n2\n3';"
 assert_equal "$(cat $STDOUT_FILE | wc -l)" 3 

@@ -60,7 +60,7 @@ run a block of code. This must precede any of the testing functions below.
 assert_equal (2)
 ----------------
 
-Assert that 2 things are equal:
+Assert that 2 numbers are equal:
 
 ###Arguments
 
@@ -70,6 +70,21 @@ Assert that 2 things are equal:
 ```
 assert_equal 42 $((21 + 21))
 ```
+
+assert_equal_str (2)
+----------------
+
+Assert that 2 strings are equal:
+
+###Arguments
+
++ observed
++ expected
+
+```
+assert_equal_str "foo" "foo" 
+```
+
 
 assert_stdout (0)
 -----------------

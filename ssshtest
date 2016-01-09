@@ -471,3 +471,23 @@ function assert_equal {
 }
 #}}}
 
+#{{{ function assert_equal_str {
+function assert_equal_str {
+
+    if [ "$FLAG" -eq 0 ];then return; fi
+
+    LINE=$(caller | cut -d " " -f1)
+
+    TOTAL=$((TOTAL + 1))
+    if [ "$1" == "$2" ]
+    then
+        SUCCESSES=$((SUCCESSES + 1))
+        echo -e "$PASS \"$1\" == \"$2\" (LINE $LINE): $RUN_NAME in $RUN_TIME"
+    else
+        FAILS=$((FAILS + 1))
+        echo -e "$FAIL \"$1\" != \"$2\" (LINE $LINE): $RUN_NAME in $RUN_TIME"
+        if [ $STOP_ON_FAIL -ne "0" ];then exit; fi
+    fi
+}
+#}}}
+
